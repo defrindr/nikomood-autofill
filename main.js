@@ -1,5 +1,7 @@
 import moment from "moment"
 import fs from "fs"
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 // GET AUTHENTICATION TOKEN
 let baseUrl = "https://staging-api-health2023.agileteknik.com/api"
@@ -10,8 +12,9 @@ const USER_INFO_URL = baseUrl + "/v1/user";
 
 const MAX_REPEAT_CHECK_TOKEN = 3;
 
-let tokenFile = 'dist/token.txt';
-let dataFile = 'dist/data.json';
+const __dirname = dirname(fileURLToPath(import.meta.url));
+let tokenFile = __dirname + '/dist/token.txt';
+let dataFile = __dirname + '/dist/data.json';
 
 let token = null;
 
@@ -180,6 +183,7 @@ let main = async () => {
 
     // Apakah hari ini sudah isi mood ?
     let today = moment().format('YYYY-MM-DD')
+    // let today = "2023-12-25"; // change this to the desired date
     let isFilledToday = await IsFilledToday(today);
     console.log("Is filled today?", isFilledToday);
 
