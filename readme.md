@@ -1,4 +1,4 @@
-# Niko Mood Autofilled
+# Niko Mood Autofill
 
 ## Installation
 
